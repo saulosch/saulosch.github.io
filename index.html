@@ -1,1 +1,169 @@
-<p>Olá Mundo!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P8NHRWM7');</script>
+    <!-- End Google Tag Manager -->
+    
+    <title>Tarot Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: #222;
+            color: #ddd;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8NHRWM7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <h1 class="text-3xl font-bold underline text-center mt-5 mb-8 font-mono">
+        Tarot Online
+    </h1>
+    <div id="app" class="font-mono">
+        <div class="nav text-center my-8">
+            <div id="info">Clique no botão correspondente ao método que deseja jogar.</div>
+            <div id="buttons" class="my-5">
+                <button type="button" @click="jogarAmericano" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Americano</button>
+                <button type="button" @click="jogarEuropeu" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Europeu</button>
+                <button type="button" @click="jogarMaiores" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Só Arcanos Maiores</button>
+                <button type="button" @click="jogarMenores" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Só Arcanos Menores</button>
+            </div>
+            
+        </div>
+        <div id="table" class="text-center mt-8">
+            
+            <div id="card1" class="text-center font-mono">
+                +------------------------------------------------+<br><br>
+                {{ card }}<br><br>
+                +------------------------------------------------+
+            </div>
+            <div class="mt-8">
+                <button v-if="card != 'Tarot Online'" type="button" @click="interpretar" class="mx-5 text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-sm rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900">Interpretação</button>
+            </div>
+            <div v-if="showMessage" class="mt-8 mx-8 text-center text-small">
+                Esta página é um projeto em desenvolvimento. Adicionar a imagem das cartas e uma interpretação é o próximo item a ser desenvolvido. Ajude-nos a crescer e melhorar fazendo uma doação em <a class="font-bold decoration-solid purple-700" target="_blank" href="https://benfeitoria.com/projeto/tarotonline">https://benfeitoria.com/projeto/tarotonline</a>. Sua contribuição permitirá que continuemos a oferecer conteúdo de qualidade e ferramentas úteis para todos os interessados no Tarot. 
+            </div>
+        </div>
+    </div> 
+
+    <script type="module">
+        
+        const { createApp, ref } = Vue
+      
+        createApp({
+          setup() {
+            const maiores = [
+                '0 - O Louco', 
+                '1 - O Mago',
+                '2 - A Sacerdotisa',
+                '3 - A Imperatriz',
+                '4 - O Imperador',
+                '5 - O Hierofante',
+                '6 - Os Enamorados',
+                '7 - O Carro',
+                '8 - A Força',
+                '9 - O Eremita',
+                '10 - A Roda da Fortuna',
+                '11 - A Justiça',
+                '12 - O Pendurado',
+                '13 - A Morte',
+                '14 - A Temperança',
+                '15 - O Diabo',
+                '16 - A Torre',
+                '17 - A Estrela',
+                '18 - A Lua',
+                '19 - O Sol',
+                '20 - O Julgamento',
+                '21 - O Mundo'
+            ]
+
+            const menores = [
+                'Às de Paus', 'Às de Copas', 'Às de Espadas', 'Às de Pentáculos',
+                'Dois de Paus', 'Dois de Copas', 'Dois de Espadas', 'Dois de Pentáculos',
+                'Três de Paus', 'Três de Copas', 'Três de Espadas', 'Três de Pentáculos',
+                'Quatro de Paus', 'Quatro de Copas', 'Quatro de Espadas', 'Quatro de Pentáculos',
+                'Cinco de Paus', 'Cinco de Copas', 'Cinco de Espadas', 'Cinco de Pentáculos',
+                'Seis de Paus', 'Seis de Copas', 'Seis de Espadas', 'Seis de Pentáculos',
+                'Sete de Paus', 'Sete de Copas', 'Sete de Espadas', 'Sete de Pentáculos',
+                'Oito de Paus', 'Oito de Copas', 'Oito de Espadas', 'Oito de Pentáculos',
+                'Nove de Paus', 'Nove de Copas', 'Nove de Espadas', 'Nove de Pentáculos',
+                'Dez de Paus', 'Dez de Copas', 'Dez de Espadas', 'Dez de Pentáculos',
+                'Pagem de Paus', 'Pagem de Copas', 'Pagem de Espadas', 'Pagem de Pentáculos',
+                'Cavaleiro de Paus', 'Cavaleiro de Copas', 'Cavaleiro de Espadas', 'Cavaleiro de Pentáculos',
+                'Rainha de Paus', 'Rainha de Copas', 'Rainha de Espadas', 'Rainha de Pentáculos',
+                'Rei de Paus', 'Rei de Copas', 'Rei de Espadas', 'Rei de Pentáculos',
+            ]
+
+            
+            let card = ref("Tarot Online")
+            let showButtonInterp = ref(false)
+            let showMessage = ref(false)
+            
+
+            function jogarAmericano(v) {
+                
+                let cartas = maiores.concat(menores)
+                console.log(cartas)
+                card.value = cartas[Math.floor(Math.random()*cartas.length)] 
+                return 1
+            }
+            
+            function jogarMaiores(v) {
+                card.value = maiores[Math.floor(Math.random()*maiores.length)]
+                return 1
+            }
+            
+            function jogarMenores(v) {
+                card.value = menores[Math.floor(Math.random()*menores.length)]
+                return 1
+            }
+            
+            function jogarEuropeu(v) {
+                card.value = maiores[Math.floor(Math.random()*maiores.length)] + ' / ' +
+                    menores[Math.floor(Math.random()*menores.length)]
+                return 1
+            }
+
+            function interpretar(v) {
+                showMessage.value = !showMessage.value
+                return 1
+            }
+
+            return {
+                card,
+                showMessage,
+                showButtonInterp,
+                jogarAmericano,
+                jogarEuropeu,
+                jogarMaiores,
+                jogarMenores,
+                interpretar
+            }
+
+          }
+        }).mount('#app')
+    </script>
+      
+</body>
+</html>
