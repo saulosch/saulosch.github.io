@@ -1,0 +1,171 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif; /* Escolha uma fonte adequada */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cor do texto principal */
+}
+
+.container {
+    max-width: 960px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 0 20px; /* Espaçamento interno */
+}
+
+/* Cabeçalho */
+header {
+    background-color: #f0f0f0; /* Cor de fundo do cabeçalho */
+    text-align: center;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-size: 36px; /* Tamanho da fonte do título */
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px; /* Tamanho da fonte do subtítulo */
+    margin-bottom: 20px;
+}
+
+/* Botão de Chamada para Ação (CTA) */
+.cta-button {
+    display: inline-block;
+    background-color: #4CAF50; /* Cor verde */
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    font-weight: bold;
+    transition: background-color 0.3s; /* Efeito de transição suave */
+}
+
+.cta-button:hover {
+    background-color: #3e8e41; /* Cor verde mais escura ao passar o mouse */
+}
+
+/* Seção de Destaque do Condomínio */
+.destaque-condominio {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.destaque-condominio h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    max-width: 100%; /* Garante que o vídeo se adapte ao container */
+    margin: 0 auto 20px; /* Centraliza o vídeo e adiciona espaço abaixo */
+}
+
+.video-container video {
+    width: auto; /* Faz o vídeo ocupar toda a largura do container */
+    height: 80vh; /* Mantém a proporção do vídeo */
+}
+
+/* Seção de Casas Disponíveis */
+.casas-disponiveis {
+    padding: 40px 0;
+}
+
+.casas-disponiveis h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.casa {
+    background-color: #f9f9f9; /* Cor de fundo das casas */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.casa h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.casa ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.casa li {
+    margin-bottom: 10px;
+}
+
+/* Seção de Localização */
+.localizacao {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.localizacao h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.mapa {
+    margin-bottom: 20px;
+}
+
+.mapa iframe {
+    width: 100%;
+    height: 400px; /* Altura do mapa */
+    border: 0;
+}
+
+/* Seção de Informações Importantes */
+.informacoes-importantes {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.informacoes-importantes h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.informacoes-importantes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Centraliza a lista */
+    max-width: 600px; /* Largura máxima da lista */
+}
+
+.informacoes-importantes li {
+    margin-bottom: 15px;
+}
+
+/* Chamada para Ação Final */
+.chamada-acao-final {
+    background-color: #f0f0f0; /* Cor de fundo */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.chamada-acao-final h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-media a {
+    color: white;
+    margin: 0 10px;
+    font-size: 24px; /* Tamanho dos ícones */
+}

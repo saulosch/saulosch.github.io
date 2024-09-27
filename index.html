@@ -1,173 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-P8NHRWM7');</script>
-    <!-- End Google Tag Manager -->
-    
-    <title>Tarot Online</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html body {
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            background-color: #222;
-            color: #ddd;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-
-    </style>
-</head>
+    <title>Aluguel de Casas - Campos Prado - Brotas - SP</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8NHRWM7"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <h1 class="text-3xl font-bold underline text-center mt-5 mb-8 font-mono">
-        Tarot Online
-    </h1>
-    <div id="app" class="font-mono">
-        <div class="nav text-center my-8">
-            <div id="info">Clique no botão correspondente ao método que deseja jogar.</div>
-            <div id="buttons" class="my-5">
-                <button type="button" @click="jogarAmericano" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Americano</button>
-                <button type="button" @click="jogarEuropeu" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Europeu</button>
-                <button type="button" @click="jogarMaiores" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Só Arcanos Maiores</button>
-                <button type="button" @click="jogarMenores" class="mx-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Só Arcanos Menores</button>
-            </div>
-            
+    <header>
+        <div class="container">
+            <h1>Seu Lar no Coração do Campo Prado</h1>
+            <p>Aluguel de casas aconchegantes e práticas, com tudo que você precisa.</p>
+            <a href="https://wa.me/5511985846616" class="cta-button">Agende uma Visita</a>
         </div>
-        <div id="table" class="text-center mt-8">
-            
-            <div id="card1" class="text-center font-mono">
-                +------------------------------------------------+<br><br>
-                {{ card }}<br><br>
-                +------------------------------------------------+
-            </div>
-            <div class="mt-8">
-                <button v-if="card != 'Tarot Online'" type="button" @click="interpretar" class="mx-5 text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-sm rounded-2 text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900">Interpretação</button>
-            </div>
-            <div v-if="showMessage" class="mt-8 mx-8 text-center text-small">
-                Esta página é um projeto em desenvolvimento. Adicionar a imagem das cartas e uma interpretação é o próximo item a ser desenvolvido. Ajude-nos a crescer e melhorar fazendo uma doação em <a class="font-bold decoration-solid purple-700" target="_blank" href="https://benfeitoria.com/projeto/tarotonline">https://benfeitoria.com/projeto/tarotonline</a>. Sua contribuição permitirá que continuemos a oferecer conteúdo de qualidade e ferramentas úteis para todos os interessados no Tarot. 
-            </div>
-            <div class="mt-8 mx-8 text-center counter">
-                 <a href='https://www.free-counters.org/'>Free-Counters.org</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=b865bcb9b531eb8cce3a62f6907ca20292fdecdc'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1165251/t/13"></script>
-            </div>
-        </div>
-    </div> 
+    </header>
 
-    <script type="module">
-        
-        const { createApp, ref } = Vue
-      
-        createApp({
-          setup() {
-            const maiores = [
-                '0 - O Louco', 
-                '1 - O Mago',
-                '2 - A Sacerdotisa',
-                '3 - A Imperatriz',
-                '4 - O Imperador',
-                '5 - O Hierofante',
-                '6 - Os Enamorados',
-                '7 - O Carro',
-                '8 - A Força',
-                '9 - O Eremita',
-                '10 - A Roda da Fortuna',
-                '11 - A Justiça',
-                '12 - O Pendurado',
-                '13 - A Morte',
-                '14 - A Temperança',
-                '15 - O Diabo',
-                '16 - A Torre',
-                '17 - A Estrela',
-                '18 - A Lua',
-                '19 - O Sol',
-                '20 - O Julgamento',
-                '21 - O Mundo'
-            ]
+    <main>
+        <section class="destaque-condominio">
+            <div class="container">
+                <h2>Condomínio Seguro e Aconchegante</h2>
+                <div class="video-container
+                        <source src="video-co">
+                    <video controls>
+                        <source src="video-condominio2.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                <p>Viva com qualidade em um condomínio tranquilo com wifi gratuito, câmeras de segurança e grades nas janelas.</p>
+                <p>Não possui garagem fechada, mas há um recuo com câmeras em frente ao condomínio com vagas para estacionar.<p>
 
-            const menores = [
-                'Às de Paus', 'Às de Copas', 'Às de Espadas', 'Às de Pentáculos',
-                'Dois de Paus', 'Dois de Copas', 'Dois de Espadas', 'Dois de Pentáculos',
-                'Três de Paus', 'Três de Copas', 'Três de Espadas', 'Três de Pentáculos',
-                'Quatro de Paus', 'Quatro de Copas', 'Quatro de Espadas', 'Quatro de Pentáculos',
-                'Cinco de Paus', 'Cinco de Copas', 'Cinco de Espadas', 'Cinco de Pentáculos',
-                'Seis de Paus', 'Seis de Copas', 'Seis de Espadas', 'Seis de Pentáculos',
-                'Sete de Paus', 'Sete de Copas', 'Sete de Espadas', 'Sete de Pentáculos',
-                'Oito de Paus', 'Oito de Copas', 'Oito de Espadas', 'Oito de Pentáculos',
-                'Nove de Paus', 'Nove de Copas', 'Nove de Espadas', 'Nove de Pentáculos',
-                'Dez de Paus', 'Dez de Copas', 'Dez de Espadas', 'Dez de Pentáculos',
-                'Pagem de Paus', 'Pagem de Copas', 'Pagem de Espadas', 'Pagem de Pentáculos',
-                'Cavaleiro de Paus', 'Cavaleiro de Copas', 'Cavaleiro de Espadas', 'Cavaleiro de Pentáculos',
-                'Rainha de Paus', 'Rainha de Copas', 'Rainha de Espadas', 'Rainha de Pentáculos',
-                'Rei de Paus', 'Rei de Copas', 'Rei de Espadas', 'Rei de Pentáculos',
-            ]
+            </div>
+        </section>
 
-            
-            let card = ref("Tarot Online")
-            let showButtonInterp = ref(false)
-            let showMessage = ref(false)
-            
+        <section class="casas-disponiveis">
+            <div class="container">
+                <h2>Casas Disponíveis</h2>
 
-            function jogarAmericano(v) {
+                <div class="casa">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video-kitnet.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <h3>Kitnet - R$ 900/mês</h3>
+                    <ul>
+                        <li>Aconchegante e prática</li>
+                        <li>Ideal para solteiros ou casais</li>
+                        <li>Sugestão de uso de guarda-roupa para divisão de ambientes</li>
+                    </ul>
+                    <a href="https://wa.me/5511985846616" class="cta-button">Quero Alugar</a>
+                </div>
+
+                <div class="casa">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video-casa-2.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <h3>2 Quartos - R$ 1150/mês</h3>
+                    <ul>
+                        <li>Espaçosa e confortável</li>
+                        <li>Perfeita para famílias ou amigos</li>
+                        <li>Quartos bem iluminados e arejados</li>
+                    </ul>
+                    <a href="https://wa.me/5511985846616" class="cta-button">Quero Alugar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="localizacao">
+            <div class="container">
+                <h2>Localização Privilegiada</h2>
+                <p>R. Francisco Colombo, 60 - Campo Prado - Brotas - SP</p>
+                <div class="mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.9794316252754!2d-48.1407873943885!3d-22.281106188593814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c7799f5ee9511d%3A0x51b5bca31ccbd6a9!2sR.%20Francisco%20Colombo%2C%20100%20-%20Lagoa%20Dourada%2C%20Brotas%20-%20SP%2C%2017380-000!5e0!3m2!1spt-BR!2sbr!4v1727448718357!5m2!1spt-BR!2sbr"      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p>Próximo a comércio, transporte público e áreas verdes.</p>
+            </div>
+        </section>
+
+        <section class="informacoes-importantes">
+            <div class="container">
+                <h2>Informações Importantes</h2>
+                <ul>
+                    <li>Aluguel, IPTU e Internet Wi-Fi inclusos</li>
+                    <li>Por ser um condomínio, não são permitidos animais de estimação</li>
+                    <li>Preferência por locação com fiador com imóvel no nome</li>
+                    <li>Caso não tenha fiador, são necessários dois ou mais locatários no contrato</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="chamada-acao-final">
+            <div class="container">
+                <h2>Pronto para Encontrar Seu Novo Lar?</h2>
+                <a href="https://wa.me/5511985846616" class="cta-button">Agende uma Visita</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 / Os valores apresentados nos vídeos podem estar desatualizados.</p>
+            <div class="social-media">
                 
-                let cartas = maiores.concat(menores)
-                console.log(cartas)
-                card.value = cartas[Math.floor(Math.random()*cartas.length)] 
-                return 1
-            }
-            
-            function jogarMaiores(v) {
-                card.value = maiores[Math.floor(Math.random()*maiores.length)]
-                return 1
-            }
-            
-            function jogarMenores(v) {
-                card.value = menores[Math.floor(Math.random()*menores.length)]
-                return 1
-            }
-            
-            function jogarEuropeu(v) {
-                card.value = maiores[Math.floor(Math.random()*maiores.length)] + ' / ' +
-                    menores[Math.floor(Math.random()*menores.length)]
-                return 1
-            }
+                <a href="https://wa.me/5511985846616"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-            function interpretar(v) {
-                showMessage.value = !showMessage.value
-                return 1
-            }
-
-            return {
-                card,
-                showMessage,
-                showButtonInterp,
-                jogarAmericano,
-                jogarEuropeu,
-                jogarMaiores,
-                jogarMenores,
-                interpretar
-            }
-
-          }
-        }).mount('#app')
-    </script>
-      
-</body>
+    <script src="script.js"></script> </body>
 </html>
