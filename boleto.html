@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atualização de Boleto | Calcular Boleto Vencido com Multa e Juros</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Atualize seus boletos vencidos com precisão. Calcule automaticamente multa, juros e valor atualizado de forma simples e gratuita.">
+  <meta name="keywords" content="atualização de boleto, calcular boleto vencido, valor atualizado de boleto, multa e juros boleto, juros por atraso, boleto atrasado">
+  <meta name="author" content="AtualizaBoleto.com">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .top-banner {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+    }
+    .lateral, .lateral-direita {
+      width: 120px;
+      background-color: #f0f0f0;
+      text-align: center;
+      font-size: 0.9em;
+      padding: 10px;
+    }
+    .conteudo {
+      flex: 1;
+      max-width: 900px;
+      padding: 20px;
+      margin: 0 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #34495e;
+    }
+    .info, .erro {
+      margin-top: 20px;
+      background: #eef;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .erro {
+      background: #ffe0e0;
+      color: #900;
+    }
+    .link-voltar {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #2c3e50;
+    }
+    .rodape {
+      background: #f0f0f0;
+      padding: 20px;
+      font-size: 0.8em;
+      text-align: center;
+      color: #555;
+    }
+    .seo-content {
+      padding: 20px;
+      font-size: 0.95em;
+      color: #444;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .seo-content h2 {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .page-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .lateral, .lateral-direita {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <p>[Anúncio Superior - Banner]</p>
+  </div>
+  <div class="page-wrapper">
+    <div class="lateral">
+      <p>[Anúncio Lateral Esquerdo]</p>
+    </div>
+    <div class="conteudo">
+      <h1>Atualização de Boleto</h1>
+      <div id="app"></div>
+    </div>
+    <div class="lateral-direita">
+      <p>[Anúncio Lateral Direito]</p>
+    </div>
+  </div>
+  <div class="rodape">
+    <p>[Anúncio Inferior]</p>
+    <div class="seo-content">
+      <h2>Calcular boleto vencido com multa e juros</h2>
+      <p>O <strong>AtualizaBoleto.com</strong> é a ferramenta mais prática e confiável para calcular o valor atualizado de boletos vencidos. Basta informar a data de vencimento, o valor original, os percentuais de multa e juros, e a data estimada de pagamento. O sistema calcula instantaneamente o valor atualizado com base nas regras mais comuns do mercado.</p>
+      <p>Se você precisa saber quanto pagar após o vencimento do boleto, aqui é o lugar certo. Seja para contas atrasadas, boletos bancários ou cobranças com juros diários, nossa calculadora considera o tempo de atraso e aplica a correção proporcional ao período vencido.</p>
+      <p>Evite surpresas no pagamento e antecipe o valor correto. Use agora o AtualizaBoleto.com — gratuito, rápido e online. Ideal para pessoas físicas, pequenas empresas e profissionais liberais que lidam com boletos vencidos.</p>
+    </div>
+    <p><em>Este cálculo é meramente referencial e pode conter imprecisões. Não nos responsabilizamos por decisões ou prejuízos decorrentes da utilização deste sistema. Para cálculos oficiais, consulte sua instituição financeira.</em></p>
+  </div>
+
+  <!-- script permanece inalterado -->
+  <script>
+    
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const feriadosFixos = ["01-01", "21-04", "01-05", "07-09", "12-10", "02-11", "15-11", "25-12"];
+
+    function isFeriadoNacional(date) {
+      const d = new Date(date);
+      const diaMes = ("0" + (d.getDate())).slice(-2) + "-" + ("0" + (d.getMonth()+1)).slice(-2);
+      return feriadosFixos.includes(diaMes);
+    }
+
+    function diasEntreDatas(data1, data2) {
+      const d1 = new Date(data1);
+      const d2 = new Date(data2);
+      const diff = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
+      return diff;
+    }
+
+    function formatarMoeda(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function formatarDataBR(dataStr) {
+      const [ano, mes, dia] = dataStr.split('-');
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    function mostrarFormulario(dados = {}) {
+      document.getElementById('app').innerHTML = `
+        <form method="GET">
+          <label>Data de Vencimento:
+            <input type="date" name="vencimento" required value="${dados.vencimento || ''}">
+          </label>
+          <label>Valor Original (R$):
+            <input type="number" name="valor" step="0.01" required value="${dados.valor || ''}" placeholder="Ex: 100.00">
+          </label>
+          <label>Multa (%):
+            <input type="number" name="multa" step="0.01" required value="${dados.multa || 2}" placeholder="Ex: 2">
+          </label>
+          <label>Juros ao mês (%):
+            <input type="number" name="juros" step="0.01" required value="${dados.juros || 1}" placeholder="Ex: 1">
+          </label>
+          <label>Data de Pagamento:
+            <input type="date" name="pagamento" required value="${dados.pagamento || ''}">
+          </label>
+          <button type="submit">Calcular</button>
+        </form>
+      `;
+    }
+
+    function mostrarErro(mensagens) {
+      document.getElementById('app').innerHTML = `
+        <div class="erro">
+          <strong>Erro no cálculo:</strong><br/>
+          <ul>
+            ${mensagens.map(msg => `<li>${msg}</li>`).join('')}
+          </ul>
+        </div>
+        <a class="link-voltar" href="?${urlParams.toString()}&refazer=1">Refazer cálculo</a>
+      `;
+    }
+
+    function mostrarResultado(params) {
+      const venc = params.get('vencimento');
+      const valor = parseFloat(params.get('valor'));
+      const multaPct = parseFloat(params.get('multa'));
+      const jurosMensalPct = parseFloat(params.get('juros'));
+      const pagamento = params.get('pagamento');
+
+      const erros = [];
+
+      const dataVenc = new Date(venc);
+      const dataPag = new Date(pagamento);
+      const diaSemanaVenc = dataVenc.getDay();
+      const diaSemanaPag = dataPag.getDay();
+
+      if (dataPag <= dataVenc) {
+        erros.push("A data de pagamento deve ser posterior à data de vencimento.");
+      }
+      if (valor < 0) erros.push("O valor original deve ser maior ou igual a zero.");
+      if (multaPct < 0) erros.push("O percentual de multa deve ser maior ou igual a zero.");
+      if (jurosMensalPct < 0) erros.push("O percentual de juros deve ser maior ou igual a zero.");
+
+      if ((diaSemanaVenc === 6 || diaSemanaVenc === 0) && diaSemanaPag === 1 && diasEntreDatas(venc, pagamento) === 2) {
+        erros.push("O vencimento caiu em um fim de semana e o pagamento foi feito na segunda-feira seguinte. Não há valores a calcular.");
+      }
+
+      if (isFeriadoNacional(dataVenc) && diasEntreDatas(venc, pagamento) <= 1) {
+        erros.push("O vencimento caiu em feriado nacional e o pagamento ocorreu no próximo dia útil. Não há valores a calcular.");
+      }
+
+      if (erros.length > 0) {
+        mostrarErro(erros);
+        return;
+      }
+
+      const diasAtraso = diasEntreDatas(venc, pagamento);
+      const multa = valor * (multaPct / 100);
+      const jurosDia = (jurosMensalPct / 100) / 30;
+      const juros = valor * jurosDia * diasAtraso;
+      const valorFinal = valor + multa + juros;
+
+      document.getElementById('app').innerHTML = `
+        <div class="info">
+          <p><strong>Data de Vencimento:</strong> ${formatarDataBR(venc)}</p>
+          <p><strong>Data de Pagamento:</strong> ${formatarDataBR(pagamento)}</p>
+          <p><strong>Dias em atraso:</strong> ${diasAtraso} dias</p>
+          <p><strong>Valor original:</strong> ${formatarMoeda(valor)}</p>
+          <p><strong>Multa (${multaPct}%):</strong> ${formatarMoeda(multa)}</p>
+          <p><strong>Juros (${jurosMensalPct}% ao mês):</strong> ${formatarMoeda(juros)}</p>
+          <p><strong>Total atualizado:</strong> ${formatarMoeda(valorFinal)}</p>
+        </div>
+        <a class="link-voltar" href="?${params.toString()}&refazer=1">Refazer cálculo</a>
+      `;
+    }
+
+    if (urlParams.has('valor') && urlParams.has('vencimento') && urlParams.has('pagamento')) {
+      if (urlParams.get('refazer')) {
+        mostrarFormulario({
+          valor: urlParams.get('valor'),
+          vencimento: urlParams.get('vencimento'),
+          multa: urlParams.get('multa'),
+          juros: urlParams.get('juros'),
+          pagamento: urlParams.get('pagamento')
+        });
+      } else {
+        mostrarResultado(urlParams);
+      }
+    } else {
+      mostrarFormulario();
+    }
+  
+  </script>
+</body>
+</html>
