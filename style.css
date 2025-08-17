@@ -1,175 +1,124 @@
-/* Estilos Gerais */
-body {
-    font-family: 'Arial', sans-serif; /* Escolha uma fonte adequada */
-    margin: 0;
-    padding: 0;
-    color: #333; /* Cor do texto principal */
+/* --- GERAL E VARIÁVEIS --- */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e67e22;
+    --background-color: #f4f6f7;
+    --text-color: #34495e;
+    --card-bg-color: #ffffff;
+    --success-color: #2ecc71;
+    --border-color: #e0e0e0;
+    --font-main: 'Roboto', sans-serif;
+    --font-headings: 'Montserrat', sans-serif;
 }
 
-.container {
-    max-width: 960px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    padding: 0 20px; /* Espaçamento interno */
-}
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-/* Cabeçalho */
-header {
-    background-color: #f0f0f0; /* Cor de fundo do cabeçalho */
+body { font-family: var(--font-main); background-color: var(--background-color); color: var(--text-color); line-height: 1.7; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+h2 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-color); text-align: center; font-size: 2.2rem; margin-bottom: 1rem; }
+
+h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-color); font-size: 1.4rem; margin-bottom: 1rem; }
+
+.section-intro { text-align: center; max-width: 700px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; }
+
+/* --- ANIMAÇÃO --- */
+.fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+/* --- HERO SECTION --- */
+/* PERFORMANCE: Para produção, baixe esta imagem, otimize-a e hospede-a localmente. */
+.hero-section { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover; z-index: 1; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); }
+.hero-content { position: relative; z-index: 2; }
+.hero-title { font-size: 3rem; margin-bottom: 0.5rem; }
+.hero-subtitle { font-size: 1.2rem; margin-bottom: 2rem; font-weight: 400; }
+.hero-button { background-color: var(--secondary-color); color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 700; transition: background-color 0.3s ease; }
+.hero-button:hover { background-color: var(--accent-color); }
+
+/* --- SEÇÕES DE LISTAGEM --- */
+.listings-section { padding: 4rem 0; }
+
+/* --- SEÇÃO DO CONDOMÍNIO --- */
+#condo-listings-section { background-color: var(--card-bg-color); }
+.condo-info-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 2rem 0; }
+.condo-info-box { padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
+.condo-info-box h3 { display: flex; align-items: center; gap: 0.75rem; }
+.condo-info-box ul { list-style: none; padding-left: 1.5rem; }
+.address-text { margin-bottom: 1rem; }
+.map-wrapper { position: relative; padding-bottom: 75%; height: 0; overflow: hidden; border-radius: 8px; }
+.map-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.rules-box { background-color: #fffbe6; border: 1px solid #ffe58f; color: #8a6d3b; padding: 1.5rem; border-radius: 8px; margin: 2rem auto; max-width: 90%; text-align: center; }
+.rules-box h4 { color: #8a6d3b; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.subsection-title {
     text-align: center;
-    padding: 40px 0;
+    margin-top: 4rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+.subsection-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+#condo-video-container video { max-height: 80vh; position: relative; text-align: cen;}
+
+
+/* --- GRID E CARDS DE IMÓVEIS --- */
+.property-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.property-card { background: var(--card-bg-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; /* Garante altura uniforme */ }
+.video-container { position: relative; }
+.property-card video { display: block; width: 100%; }
+.property-details { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.property-price { font-size: 1.8rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
+.features-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; padding: 0; }
+.features-list li { display: flex; align-items: center; gap: 0.5rem; background-color: #f4f6f7; padding: 5px 10px; border-radius: 5px; }
+.property-cta-button { background-color: var(--success-color); color: white; padding: 12px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: auto; transition: opacity 0.3s; }
+.property-cta-button:hover { opacity: 0.9; }
+
+/* --- SEÇÃO COMO ALUGAR --- */
+#rental-conditions { padding: 4rem 0; }
+
+#documentos {
+    padding: 4rem 0;
+    background-color: var(--card-bg-color);
 }
 
-header h1 {
-    font-size: 36px; /* Tamanho da fonte do título */
-    margin-bottom: 10px;
+.conditions-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.condition-card { background: var(--card-bg-color); padding: 2rem; border-radius: 8px; border-top: 5px solid var(--border-color); position: relative; }
+.condition-card.highlighted { border-top-color: var(--accent-color); }
+.highlight-badge { position: absolute; top: -15px; right: 20px; background-color: var(--accent-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; }
+.payment-terms { font-style: italic; margin-bottom: 1rem; background-color: #f8f9fa; padding: 10px; border-radius: 5px; }
+.condition-card ul { list-style: none; }
+.condition-card li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; }
+.condition-card li i { color: var(--success-color); margin-right: 0.75rem; margin-top: 4px; }
+
+/* --- FOOTER E BOTÃO WHATSAPP --- */
+footer { background-color: var(--primary-color); color: #bdc3c7; padding: 3rem 0; text-align: center; }
+footer h2 { color: white; }
+.footer-cta-button { background-color: var(--success-color); color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-block; margin-top: 1rem; margin-bottom: 2rem; }
+.copyright { font-size: 0.9rem; }
+.whatsapp-float { position: fixed; text-decoration: none; bottom: 20px; right: 20px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.3s; }
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* --- MEDIA QUERIES --- */
+@media (min-width: 768px) {
+    .hero-title { font-size: 4rem; }
+    .condo-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .property-grid { grid-template-columns: repeat(2, 1fr); }
+    .conditions-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-header p {
-    font-size: 18px; /* Tamanho da fonte do subtítulo */
-    margin-bottom: 20px;
+@media (min-width: 1024px) {
+    .property-grid { grid-template-columns: repeat(3, 1fr); }
 }
-
-/* Botão de Chamada para Ação (CTA) */
-.cta-button {
-    display: inline-block;
-    background-color: #4CAF50; /* Cor verde */
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px; /* Bordas arredondadas */
-    font-weight: bold;
-    transition: background-color 0.3s; /* Efeito de transição suave */
-}
-
-.cta-button:hover {
-    background-color: #3e8e41; /* Cor verde mais escura ao passar o mouse */
-}
-
-/* Seção de Destaque do Condomínio */
-.destaque-condominio {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.destaque-condominio h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.video-container {
-    max-width: 100%; /* Garante que o vídeo se adapte ao container */
-    margin: 0 auto 20px; /* Centraliza o vídeo e adiciona espaço abaixo */
-}
-
-.video-container video {
-    width: auto; /* Faz o vídeo ocupar toda a largura do container */
-    height: 80vh; /* Mantém a proporção do vídeo */
-}
-
-/* Seção de Casas Disponíveis */
-.casas-disponiveis {
-    padding: 40px 0;
-}
-
-.casas-disponiveis h2 {
-    font-size: 30px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.casa {
-    background-color: #f9f9f9; /* Cor de fundo das casas */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-.casa h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.casa ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-.casa li {
-    margin-bottom: 10px;
-}
-
-/* Seção de Localização */
-.localizacao {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.localizacao h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.mapa {
-    margin-bottom: 20px;
-}
-
-.mapa iframe {
-    width: 100%;
-    height: 400px; /* Altura do mapa */
-    border: 0;
-}
-
-/* Seção de Informações Importantes */
-.informacoes-importantes {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.informacoes-importantes h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.informacoes-importantes ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto; /* Centraliza a lista */
-    max-width: 600px; /* Largura máxima da lista */
-}
-
-.informacoes-importantes li {
-    margin-bottom: 15px;
-}
-
-/* Chamada para Ação Final */
-.chamada-acao-final {
-    background-color: #f0f0f0; /* Cor de fundo */
-    padding: 40px 0;
-    text-align: center;
-}
-
-.chamada-acao-final h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-/* Rodapé */
-footer {
-    background-color: #333; /* Cor de fundo do rodapé */
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer .social-media a {
-    color: white;
-    margin: 0 10px;
-    font-size: 24px; /* Tamanho dos ícones */
-}
-
-.text-left {
-    text-align: left !important;
-} 

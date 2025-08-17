@@ -1,153 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluguel de Casas - Campos Prado - Brotas - SP</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> </head>
+    <!-- SEO -->
+    <title>Aluguel de Casas e Kitnets em Brotas/SP - Direto com o Proprietário</title>
+    <meta name="description" content="Alugue casas e kitnets direto com o proprietário em Brotas, SP. Opções em condomínio fechado com Wi-Fi grátis. Facilidades como locação sem fiador. Clique e conheça!">
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-P8NHRWM7');</script>
-        <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-54WPQDLFZ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-54WPQDLFZ4');
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8NHRWM7"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
 
-
-    <header>
-        <div class="container">
-            <h1>Seu Lar no Coração do Campos Prado</h1>
-            <p>Aluguel de casas aconchegantes e práticas, com tudo que você precisa.</p>
-            <a href="https://wa.me/5511981246767" class="cta-button">Agende uma Visita</a>
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Encontre seu próximo lar em Brotas</h1>
+            <p class="hero-subtitle">Aluguel de imóveis seguros e aconchegantes, direto com o proprietário.</p>
+            <a href="#listings" class="hero-button">Ver Imóveis Disponíveis</a>
         </div>
     </header>
 
     <main>
-        <section class="destaque-condominio">
-            <div class="container">
-                <h2>Condomínio Seguro e Aconchegante</h2>
-                <div class="video-container
-                        <source src="video-co">
-                    <video controls>
-                        <source src="video-condominio2.mp4" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                </div>
-                <p>Viva com qualidade em um condomínio tranquilo com wifi gratuito, câmeras de segurança e grades nas janelas.</p>
-                <p>Não possui garagem fechada, mas há um recuo com câmeras em frente ao condomínio com vagas para estacionar.<p>
+        <div id="listings"></div> <!-- Âncora para o botão do Hero -->
 
-            </div>
-        </section>
-
-        <section class="casas-disponiveis">
+        <!-- Seção para o Condomínio -->
+        <section id="condo-listings-section" class="listings-section" style="display: none;">
             <div class="container">
-                <h2>Casas Disponíveis</h2>
-<!--
-                <div class="casa">
-                    <div class="video-container">
-                        <video controls>
-                            <source src="video-kitnet.mp4" type="video/mp4">
-                            Seu navegador não suporta o elemento de vídeo.
-                        </video>
+                <h2 id="condo-name"></h2>
+                <p id="condo-description" class="section-intro"></p>
+                
+                <div class="condo-info-grid">
+                    <div id="condo-amenities-container" class="condo-info-box">
+                        <h3><i class="fas fa-shield-alt"></i> Comodidades e Segurança</h3>
+                        <ul id="condo-amenities-list"></ul>
+                        
                     </div>
-                    <h3>Kitnet - R$ 900/mês</h3>
-                    <ul>
-                        <li>Aconchegante e prática</li>
-                        <li>Ideal para solteiros ou casais</li>
-                        <li>Sugestão de uso de guarda-roupa para divisão de ambientes</li>
-                    </ul>
-                    <a href="https://wa.me/5511981246767" class="cta-button">Quero Alugar</a>
-                </div>
--->
-                <div class="casa">
-                    <div class="video-container">
-                        <video controls>
-                            <source src="video-casa-2.mp4" type="video/mp4">
-                            Seu navegador não suporta o elemento de vídeo.
-                        </video>
+
+                    <div id="condo-rules-container" class="condo-info-box">
+                    <h3><i class="fas fa-paw"></i> Sobre Animais de Estimação</h3>
+                    <p id="condo-rules"></p>
                     </div>
-                    <h3>2 Quartos - R$ 1.200/mês</h3>
-                    <ul>
-                        <li>Espaçosa e confortável</li>
-                        <li>Perfeita para famílias ou amigos</li>
-                        <li>Quartos bem iluminados e arejados</li>
-                    </ul>
-                    <a href="https://wa.me/5511981246767" class="cta-button">Quero Alugar</a>
+
+                    
+                    <div id="condo-video-box" class="condo-info-box">
+                    <h3><i class="fas fa-video"></i> Vídeo do Condomínio</h3>
+                                        
+                        <div id="condo-video-container">
+                            <!-- Vídeo das áreas comuns será inserido aqui -->
+                        </div>
+                    </div>
+                    
+                
+
+
+                    <div id="condo-map-container" class="condo-info-box">
+                        <h3><i class="fas fa-map-location-dot"></i> Localização</h3>
+                        <p id="condo-address" class="address-text"></p>
+                        <div class="map-wrapper" id="condo-map-wrapper"></div>
+                    </div>
+                </div>
+
+                
+
+                <h3 class="subsection-title">Nossos imóveis no condomínio:</h3>
+                
+                <div id="condo-property-listings" class="property-grid">
+                    <!-- Cards dos imóveis do condomínio -->
                 </div>
             </div>
         </section>
 
-        <section class="localizacao">
+        <!-- Seção para Outros Imóveis -->
+        <section id="other-listings-section" class="listings-section" style="display: none;">
             <div class="container">
-                <h2>Localização Privilegiada</h2>
-                <p>R. Francisco Colombo, 60 - Campo Prado - Brotas - SP</p>
-                <div class="mapa">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.9794316252754!2d-48.1407873943885!3d-22.281106188593814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c7799f5ee9511d%3A0x51b5bca31ccbd6a9!2sR.%20Francisco%20Colombo%2C%20100%20-%20Lagoa%20Dourada%2C%20Brotas%20-%20SP%2C%2017380-000!5e0!3m2!1spt-BR!2sbr!4v1727448718357!5m2!1spt-BR!2sbr"      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2>Casas Fora do Condomínio</h2>
+                <div id="other-property-listings" class="property-grid">
+                    <!-- Cards de outras propriedades -->
                 </div>
-                <p>Próximo a comércio, transporte público e áreas verdes.</p>
             </div>
         </section>
 
-        <section class="informacoes-importantes">
+        <!-- Seção Como Alugar -->
+        <section id="rental-conditions">
             <div class="container">
-                <h2>Informações Importantes</h2>
-                <ul>
-                    <li>IPTU e Internet Wi-Fi grátis</li>
-                    <li>Por ser um condomínio, <strong>não são permitidos animais de estimação</strong></li>
-                    <li>Locação com fiador com imóvel no nome</li>
-                    <!-- <li>Caso não tenha fiador, são necessários dois ou mais locatários no contrato</li> --->
-                </ul>
-            </div>
-        </section>
-        <section class="informacoes-importantes">
-            <div class="container">
-                
-                <h2>Reservas</h2>
-                <div>As reservas são feitas apenas mediante ao envio da documentação completa para elaboração do contrato.</div>
-                <h3>Locação apenas COM fiador</h3>
-                <div class="text-left">
-                    <ul>
-                        <li>RG (com CPF) ou CNH do locatário (pessoa que vai constar no contrato como quem alugou o imóvel)</li>
-                        <li>RG (com CPF) ou CNH do fiador (ou fiadores se o imóvel estiver no nome de mais de uma pessoa)</li>
-                        <li>Comprovante de residência do locatário e do fiador</li>
-                        <li>Informar profissão e estado civil de todos (locatários e fiadores)</li>
-                        <li>Matrícula atualizada do imóvel do fiador (o imovel deve ser quitado e não pode estar dado em garantia)</li>
-                        <li>Nessa modalidade de locação, é cobrado o aluguel do mês vencido, ou seja, o primeiro pagamento é cobrado no <b>fim</b> do primeiro mês, o segundo pagamento é cobrado no <b>fim</b> do segundo mês e assim sucessivamente.</li>
-                        <li>Informar as pendências financeiras (Serasa, SPC etc.) de todos (locatários e fiadores), caso possuam.</li>
-                    </ul>
+                <h2>Como Alugar</h2>
+                <p class="section-intro">Oferecemos duas modalidades de locação para facilitar o seu processo. Veja qual se encaixa melhor no seu perfil.</p>
+                <div class="conditions-grid">
+                    <div class="condition-card highlighted">
+                        <span class="highlight-badge">Recomendado</span>
+                        <h3><i class="fas fa-user-shield"></i> Com Fiador</h3>
+                        <p class="payment-terms">Nesta opção, o aluguel é pago no final de cada mês, ou seja, <strong>você primeiro mora e depois paga.</strong></p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Necessário apresentar um fiador com imóvel quitado.</li>
+                            <li><i class="fas fa-check-circle"></i> Análise de crédito padrão para locatário e fiador.</li>
+                        </ul>
+                    </div>
+                    <div class="condition-card">
+                        <h3><i class="fas fa-users"></i> Sem Fiador</h3>
+                        <p class="payment-terms">Aqui, o aluguel é pago no início de cada mês, ou seja, <strong>você paga para então morar.</strong></p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Contrato no nome de 3 locatários (pagantes).</li>
+                            <li><i class="fas fa-check-circle"></i> Todos devem comprovar trabalho formal (CLT).</li>
+                            <li><i class="fas fa-check-circle"></i> Sem restrições financeiras (SPC/Serasa).</li>
+                        </ul>
+                    </div>
                 </div>
-                <!--
-                <h3>Para locação SEM fiador</h3>
-                <div class="text-left">
-                
-                    <ul>
-                        <li>São necessários, no mínimo, dois locatários.</li>
-                        <li>RG (com CPF) ou CNH dos locatários (pessoas que vão constar no contrato como quem alugou o imóvel)</li>
-                        <li>Comprovante de residência dos locatários</li>
-                        <li>Informar profissão e estado civil dos locatários</li>
-                        <li>Comprovante de renda (2 últimos holerites) de cada um dos locatários, sendo que o valor somado da renda mensal deve ser superior a 3 vezes o valor do aluguel</li>
-                        <li>Nessa modalidade de locação, é cobrado o aluguel do mês vincendo, ou seja, o primeiro pagamento é cobrado no <b>início</b> do primeiro mês (na assinatura do contrato), o segundo pagamento é cobrado no <b>ínicio</b> do segundo mês e assim sucessivamente.</li>
-                        <li>Informar as pendências financeiras (Serasa, SPC etc.) de todos os locatários, caso possuam.</li>
-                    </ul>
-                </div>
-                -->
             </div>
         </section>
 
-        
-        <section class="chamada-acao-final">
+        <!-- Seção Documentação -->
+        <section id="documentos">
             <div class="container">
-                <h2>Pronto para Encontrar Seu Novo Lar?</h2>
-                
-                <p>Entre em contato por telefone <a href="tel:+5511981246767">(11) 9 8124 6767</a></p>
-                <a href="https://wa.me/5511981246767" class="cta-button">Clique aqui para falar por Whatsapp</a>
+                <h2>Documentação Necessária</h2>
+                <p class="section-intro">Para garantir sua reserva, é preciso apresentar a documentação completa para a elaboração do contrato. Agilize o processo enviando os seguintes itens:</p>
+                <div class="conditions-grid">
+                    <div class="condition-card">
+                        <h3><i class="fas fa-user-shield"></i> Para Locação com Fiador</h3>
+                        <ul>
+                            <li><i class="fas fa-id-card"></i> RG ou CNH (com CPF) do locatário e do fiador.</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Comprovante de residência de ambos.</li>
+                            <li><i class="fas fa-briefcase"></i> Informar profissão e estado civil de ambos.</li>
+                            <li><i class="fas fa-file-signature"></i> Matrícula atualizada do imóvel do fiador (imóvel deve ser quitado).</li>
+                            <li><i class="fas fa-comment-dots"></i> Informar eventuais pendências financeiras (Serasa/SPC).</li>
+                        </ul>
+                    </div>
+                    <div class="condition-card">
+                        <h3><i class="fas fa-users"></i> Para Locação sem Fiador</h3>
+                        <ul>
+                            <li><i class="fas fa-id-card"></i> RG ou CNH (com CPF) dos 3 locatários.</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Comprovante de residência de todos os locatários.</li>
+                            <li><i class="fas fa-briefcase"></i> Informar profissão e estado civil de todos.</li>
+                            <li><i class="fas fa-file-invoice-dollar"></i> Comprovante de renda (2 últimos holerites) de cada um.</li>
+                            <li><i class="fas fa-comment-dots"></i> Informar eventuais pendências financeiras (Serasa/SPC).</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -155,17 +158,18 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 / Os valores apresentados nos vídeos podem estar desatualizados.</p>
-            <div class="social-media">
-                
-                <a href="https://wa.me/5511981246767"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <div class="mt-8 mx-8 text-center counter">
-                <a href='https://www.free-counters.org/'>Free-Counters.org</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=b865bcb9b531eb8cce3a62f6907ca20292fdecdc'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1165251/t/13"></script>
-           </div>
+            <h2>Gostou de um imóvel?</h2>
+            <p>Fale comigo agora e agende uma visita sem compromisso.</p>
+            <a href="https://wa.me/5511981246767" target="_blank" class="footer-cta-button"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>
+            <p class="copyright">&copy; 2025 Saulo Imóveis. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script> </body>
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5511981246767" target="_blank" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
 </html>
