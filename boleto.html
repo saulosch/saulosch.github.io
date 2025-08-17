@@ -2,82 +2,101 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Atualização de Boleto | Calcular Boleto Vencido com Multa e Juros</title>
+  <title>Calculadora de Boleto Vencido com Multa e Juros | Atualização de Boleto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Atualize seus boletos vencidos com precisão. Calcule automaticamente multa, juros e valor atualizado de forma simples e gratuita.">
-  <meta name="keywords" content="atualização de boleto, calcular boleto vencido, valor atualizado de boleto, multa e juros boleto, juros por atraso, boleto atrasado">
-  <meta name="author" content="AtualizaBoleto.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --success-color: #2ecc71;
+        --background-color: #f4f6f7;
+        --text-color: #34495e;
+        --card-bg-color: #ffffff;
+        --border-color: #dfe4ea;
     }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    .top-banner {
-      background: #f0f0f0;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-    }
-    .page-wrapper {
-      display: flex;
-      justify-content: center;
-      max-width: 100%;
-    }
-    .lateral, .lateral-direita {
-      width: 120px;
-      background-color: #f0f0f0;
-      text-align: center;
-      font-size: 0.9em;
-      padding: 10px;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
     .conteudo {
-      flex: 1;
-      max-width: 900px;
+      max-width: 700px;
       padding: 20px;
-      margin: 0 10px;
-      background-color: #fff;
+      margin: 2rem auto;
+      background-color: var(--card-bg-color);
       border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
     h1 {
+      font-family: 'Montserrat', sans-serif;
       text-align: center;
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+        margin-bottom: 1.25rem;
     }
     label {
       display: block;
-      margin-top: 15px;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
-    input {
+    .form-control {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    button {
+    .form-control:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+    .form-text {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-top: 0.25rem;
+        display: block;
+    }
+    .btn {
       margin-top: 20px;
       width: 100%;
-      padding: 10px;
-      background: #2c3e50;
+      padding: 12px;
+      background: var(--primary-color);
       color: white;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #34495e;
-    }
-    .info, .erro {
-      margin-top: 20px;
-      background: #eef;
-      padding: 15px;
       border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .btn:hover { background: #34495e; }
+    .btn.calculating {
+        background-color: #5a6d80;
+        cursor: not-allowed;
+    }
+    .trust-badge {
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #6c757d;
     }
     .erro {
+      margin-top: 20px;
       background: #ffe0e0;
+      padding: 15px;
+      border-radius: 6px;
       color: #900;
     }
     .link-voltar {
@@ -85,83 +104,115 @@
       display: block;
       text-align: center;
       text-decoration: none;
-      color: #2c3e50;
+      color: var(--primary-color);
+      font-weight: 500;
     }
-    .rodape {
-      background: #f0f0f0;
-      padding: 20px;
-      font-size: 0.8em;
-      text-align: center;
-      color: #555;
+    /* Card de Resultado */
+    .result-card {
+        background-color: #f8f9fa;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-top: 2rem;
+        overflow: hidden;
+    }
+    .result-header {
+        padding: 1rem 1.5rem;
+        background-color: #e9ecef;
+    }
+    .result-body {
+        padding: 1.5rem;
+        display: grid;
+        gap: 1rem;
+    }
+    .result-body p {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .result-body p strong { color: var(--primary-color); }
+    .result-footer {
+        padding: 1rem 1.5rem;
+        background-color: #e9ecef;
+        text-align: center;
+    }
+    .result-total {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--success-color);
+    }
+    #copyButton {
+        background-color: var(--success-color);
+        margin-top: 1rem;
+    }
+    #copyButton:hover {
+        background-color: #27ae60;
     }
     .seo-content {
-      padding: 20px;
+      padding: 2rem;
       font-size: 0.95em;
       color: #444;
       line-height: 1.6;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 2rem auto;
+      background-color: var(--card-bg-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
-    .seo-content h2 {
-      font-size: 1.2em;
-      margin-top: 20px;
+    .seo-content h2, .seo-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
     }
-    @media (max-width: 768px) {
-      .page-wrapper {
-        flex-direction: column;
-        align-items: center;
-      }
-      .lateral, .lateral-direita {
-        width: 100%;
-      }
+    .disclaimer-box {
+        background-color: #fffbe6;
+        border: 1px solid #ffe58f;
+        color: #8a6d3b;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+    }
+    .disclaimer-box h4 {
+        margin-top: 0;
+        color: #66512c;
     }
   </style>
 </head>
 <body>
-  <div class="top-banner">
-    <p>[Anúncio Superior - Banner]</p>
-  </div>
-  <div class="page-wrapper">
-    <div class="lateral">
-      <p>[Anúncio Lateral Esquerdo]</p>
-    </div>
-    <div class="conteudo">
-      <h1>Atualização de Boleto</h1>
-      <div id="app"></div>
-    </div>
-    <div class="lateral-direita">
-      <p>[Anúncio Lateral Direito]</p>
-    </div>
-  </div>
-  <div class="rodape">
-    <p>[Anúncio Inferior]</p>
-    <div class="seo-content">
-      <h2>Calcular boleto vencido com multa e juros</h2>
-      <p>O <strong>AtualizaBoleto.com</strong> é a ferramenta mais prática e confiável para calcular o valor atualizado de boletos vencidos. Basta informar a data de vencimento, o valor original, os percentuais de multa e juros, e a data estimada de pagamento. O sistema calcula instantaneamente o valor atualizado com base nas regras mais comuns do mercado.</p>
-      <p>Se você precisa saber quanto pagar após o vencimento do boleto, aqui é o lugar certo. Seja para contas atrasadas, boletos bancários ou cobranças com juros diários, nossa calculadora considera o tempo de atraso e aplica a correção proporcional ao período vencido.</p>
-      <p>Evite surpresas no pagamento e antecipe o valor correto. Use agora o AtualizaBoleto.com — gratuito, rápido e online. Ideal para pessoas físicas, pequenas empresas e profissionais liberais que lidam com boletos vencidos.</p>
-    </div>
-    <p><em>Este cálculo é meramente referencial e pode conter imprecisões. Não nos responsabilizamos por decisões ou prejuízos decorrentes da utilização deste sistema. Para cálculos oficiais, consulte sua instituição financeira.</em></p>
+  <div class="conteudo">
+    <div id="app"></div>
   </div>
 
-  <!-- script permanece inalterado -->
+  <div class="seo-content">
+    <h2>Tudo Sobre a Atualização de Boletos</h2>
+    <p>O <strong>AtualizaBoleto.com</strong> é sua ferramenta online e gratuita para <strong>calcular o valor atualizado de boletos vencidos</strong>. Basta informar a data de vencimento, o valor original, os percentuais de multa e juros, e a data estimada de pagamento. O sistema calcula instantaneamente o valor atualizado com base nas regras mais comuns do mercado.</p>
+    <p>Se você precisa saber quanto pagar após o vencimento do boleto, aqui é o lugar certo. Seja para <strong>contas atrasadas</strong>, <strong>boletos bancários</strong> ou cobranças com <strong>juros diários</strong>, nossa calculadora considera o tempo de atraso e aplica a correção proporcional ao período vencido.</p>
+    <h3>Cálculo Rápido e Gratuito</h3>
+    <p>Evite surpresas no pagamento e antecipe o valor correto. Use agora o AtualizaBoleto.com — gratuito, rápido e online. Ideal para pessoas físicas, pequenas empresas e profissionais liberais que lidam com boletos vencidos.</p>
+    <div class="disclaimer-box">
+        <h4>Aviso Importante</h4>
+        <p>Este cálculo é uma simulação e serve apenas como referência. Não nos responsabilizamos por decisões ou prejuízos decorrentes da utilização deste sistema. Para cálculos oficiais, consulte sua instituição financeira.</p>
+    </div>
+  </div>
+
   <script>
-    
     const urlParams = new URLSearchParams(window.location.search);
-
     const feriadosFixos = ["01-01", "21-04", "01-05", "07-09", "12-10", "02-11", "15-11", "25-12"];
 
     function isFeriadoNacional(date) {
-      const d = new Date(date);
-      const diaMes = ("0" + (d.getDate())).slice(-2) + "-" + ("0" + (d.getMonth()+1)).slice(-2);
+      const d = new Date(date.valueOf() + date.getTimezoneOffset() * 60000);
+      const diaMes = ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2);
       return feriadosFixos.includes(diaMes);
+    }
+
+    function isDiaUtil(date) {
+        const diaSemana = date.getDay();
+        return !(diaSemana === 0 || diaSemana === 6 || isFeriadoNacional(date));
     }
 
     function diasEntreDatas(data1, data2) {
       const d1 = new Date(data1);
       const d2 = new Date(data2);
-      const diff = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
-      return diff;
+      return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
     }
 
     function formatarMoeda(valor) {
@@ -175,37 +226,110 @@
 
     function mostrarFormulario(dados = {}) {
       document.getElementById('app').innerHTML = `
-        <form method="GET">
-          <label>Data de Vencimento:
-            <input type="date" name="vencimento" required value="${dados.vencimento || ''}">
-          </label>
-          <label>Valor Original (R$):
-            <input type="number" name="valor" step="0.01" required value="${dados.valor || ''}" placeholder="Ex: 100.00">
-          </label>
-          <label>Multa (%):
-            <input type="number" name="multa" step="0.01" required value="${dados.multa || 2}" placeholder="Ex: 2">
-          </label>
-          <label>Juros ao mês (%):
-            <input type="number" name="juros" step="0.01" required value="${dados.juros || 1}" placeholder="Ex: 1">
-          </label>
-          <label>Data de Pagamento:
-            <input type="date" name="pagamento" required value="${dados.pagamento || ''}">
-          </label>
-          <button type="submit">Calcular</button>
+        <h1>Calcule e Atualize seu Boleto Atrasado na Hora</h1>
+        <form id="boletoForm" method="GET">
+          <div class="form-group">
+            <label for="vencimento">Data de Vencimento:</label>
+            <input class="form-control" type="date" id="vencimento" name="vencimento" required value="${dados.vencimento || ''}">
+          </div>
+          <div class="form-group">
+            <label for="valor">Valor Original (R$):</label>
+            <input class="form-control" type="number" id="valor" name="valor" step="0.01" required value="${dados.valor || ''}" placeholder="Ex: 100,00" inputmode="decimal">
+          </div>
+          <div class="form-group">
+            <label for="multa">Multa (%):</label>
+            <input class="form-control" type="number" id="multa" name="multa" step="0.01" required value="${dados.multa || 2}" placeholder="Ex: 2" inputmode="decimal">
+            <small class="form-text">Multa por atraso aplicada uma única vez sobre o valor original.</small>
+          </div>
+          <div class="form-group">
+            <label for="juros">Juros ao mês (%):</label>
+            <input class="form-control" type="number" id="juros" name="juros" step="0.01" required value="${dados.juros || 1}" placeholder="Ex: 1" inputmode="decimal">
+            <small class="form-text">Juros aplicados por dia de atraso (pro rata die).</small>
+          </div>
+          <div class="form-group">
+            <label for="pagamento">Data de Pagamento:</label>
+            <input class="form-control" type="date" id="pagamento" name="pagamento" required value="${dados.pagamento || ''}">
+          </div>
+          <button id="calcButton" type="submit" class="btn">Calcular</button>
+          <p class="trust-badge">🔒 Cálculo seguro. Seus dados não são armazenados.</p>
         </form>
       `;
+      document.getElementById('boletoForm').addEventListener('submit', function(e) {
+          const btn = document.getElementById('calcButton');
+          btn.textContent = 'Calculando...';
+          btn.classList.add('calculating');
+          btn.disabled = true;
+      });
     }
 
     function mostrarErro(mensagens) {
       document.getElementById('app').innerHTML = `
+        <h1>Ops! Algo deu errado</h1>
         <div class="erro">
-          <strong>Erro no cálculo:</strong><br/>
+          <strong>Por favor, corrija os seguintes erros:</strong><br/>
           <ul>
             ${mensagens.map(msg => `<li>${msg}</li>`).join('')}
           </ul>
         </div>
-        <a class="link-voltar" href="?${urlParams.toString()}&refazer=1">Refazer cálculo</a>
+        <a class="link-voltar" href="?${urlParams.toString()}&refazer=1">Tentar Novamente</a>
       `;
+    }
+
+    function copiarResultadoParaClipboard() {
+        const params = new URLSearchParams(window.location.search);
+        const venc = params.get('vencimento');
+        const valor = parseFloat(params.get('valor'));
+        const multaPct = parseFloat(params.get('multa'));
+        const jurosMensalPct = parseFloat(params.get('juros'));
+        const pagamento = params.get('pagamento');
+        
+        let aplicarMultaEJuros = true;
+        const dataVenc = new Date(venc + "T12:00:00");
+        const dataPag = new Date(pagamento + "T12:00:00");
+
+        if (!isDiaUtil(dataVenc)) {
+            let proximoDiaUtil = new Date(dataVenc);
+            proximoDiaUtil.setDate(proximoDiaUtil.getDate() + 1);
+            while (!isDiaUtil(proximoDiaUtil)) {
+                proximoDiaUtil.setDate(proximoDiaUtil.getDate() + 1);
+            }
+            if (dataPag <= proximoDiaUtil) {
+                aplicarMultaEJuros = false;
+            }
+        }
+
+        const diasAtraso = diasEntreDatas(venc, pagamento);
+        const multa = aplicarMultaEJuros ? valor * (multaPct / 100) : 0;
+        const jurosDia = (jurosMensalPct / 100) / 30;
+        const juros = aplicarMultaEJuros ? valor * jurosDia * diasAtraso : 0;
+        const valorFinal = valor + multa + juros;
+
+        const linkRecalculo = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+        const textoParaCopiar = `
+--- Resumo do Boleto ---
+Data de Vencimento: ${formatarDataBR(venc)}
+Data de Pagamento: ${formatarDataBR(pagamento)}
+Dias em atraso: ${diasAtraso} dias
+Valor original: ${formatarMoeda(valor)}
+Multa (${multaPct}%): ${formatarMoeda(multa)}
+Juros (${jurosMensalPct}% ao mês): ${formatarMoeda(juros)}
+Total atualizado: ${formatarMoeda(valorFinal)}
+-------------------------
+
+Para recalcular ou ver os detalhes, acesse o link:
+${linkRecalculo}
+        `.trim();
+
+        navigator.clipboard.writeText(textoParaCopiar).then(() => {
+            const copyButton = document.getElementById('copyButton');
+            copyButton.textContent = 'Copiado com Sucesso!';
+            setTimeout(() => {
+                copyButton.textContent = 'Copiar Resultado e Link';
+            }, 3000);
+        }).catch(err => {
+            console.error('Falha ao copiar texto: ', err);
+            alert('Não foi possível copiar o texto.');
+        });
     }
 
     function mostrarResultado(params) {
@@ -216,49 +340,60 @@
       const pagamento = params.get('pagamento');
 
       const erros = [];
-
-      const dataVenc = new Date(venc);
-      const dataPag = new Date(pagamento);
-      const diaSemanaVenc = dataVenc.getDay();
-      const diaSemanaPag = dataPag.getDay();
-
-      if (dataPag <= dataVenc) {
+      if (new Date(pagamento) <= new Date(venc)) {
         erros.push("A data de pagamento deve ser posterior à data de vencimento.");
       }
-      if (valor < 0) erros.push("O valor original deve ser maior ou igual a zero.");
-      if (multaPct < 0) erros.push("O percentual de multa deve ser maior ou igual a zero.");
-      if (jurosMensalPct < 0) erros.push("O percentual de juros deve ser maior ou igual a zero.");
-
-      if ((diaSemanaVenc === 6 || diaSemanaVenc === 0) && diaSemanaPag === 1 && diasEntreDatas(venc, pagamento) === 2) {
-        erros.push("O vencimento caiu em um fim de semana e o pagamento foi feito na segunda-feira seguinte. Não há valores a calcular.");
-      }
-
-      if (isFeriadoNacional(dataVenc) && diasEntreDatas(venc, pagamento) <= 1) {
-        erros.push("O vencimento caiu em feriado nacional e o pagamento ocorreu no próximo dia útil. Não há valores a calcular.");
-      }
+      if (isNaN(valor) || valor < 0) erros.push("O valor original é inválido.");
+      if (isNaN(multaPct) || multaPct < 0) erros.push("O percentual de multa é inválido.");
+      if (isNaN(jurosMensalPct) || jurosMensalPct < 0) erros.push("O percentual de juros é inválido.");
 
       if (erros.length > 0) {
         mostrarErro(erros);
         return;
       }
 
+      let aplicarMultaEJuros = true;
+      const dataVenc = new Date(venc + "T12:00:00");
+      const dataPag = new Date(pagamento + "T12:00:00");
+
+      if (!isDiaUtil(dataVenc)) {
+          let proximoDiaUtil = new Date(dataVenc);
+          proximoDiaUtil.setDate(proximoDiaUtil.getDate() + 1);
+          while (!isDiaUtil(proximoDiaUtil)) {
+              proximoDiaUtil.setDate(proximoDiaUtil.getDate() + 1);
+          }
+          if (dataPag <= proximoDiaUtil) {
+              aplicarMultaEJuros = false;
+          }
+      }
+
       const diasAtraso = diasEntreDatas(venc, pagamento);
-      const multa = valor * (multaPct / 100);
+      const multa = aplicarMultaEJuros ? valor * (multaPct / 100) : 0;
       const jurosDia = (jurosMensalPct / 100) / 30;
-      const juros = valor * jurosDia * diasAtraso;
+      const juros = aplicarMultaEJuros ? valor * jurosDia * diasAtraso : 0;
       const valorFinal = valor + multa + juros;
+      const resumo = `Seu boleto com vencimento em ${formatarDataBR(venc)} está com ${diasAtraso} dias de atraso.`;
 
       document.getElementById('app').innerHTML = `
-        <div class="info">
-          <p><strong>Data de Vencimento:</strong> ${formatarDataBR(venc)}</p>
-          <p><strong>Data de Pagamento:</strong> ${formatarDataBR(pagamento)}</p>
-          <p><strong>Dias em atraso:</strong> ${diasAtraso} dias</p>
-          <p><strong>Valor original:</strong> ${formatarMoeda(valor)}</p>
-          <p><strong>Multa (${multaPct}%):</strong> ${formatarMoeda(multa)}</p>
-          <p><strong>Juros (${jurosMensalPct}% ao mês):</strong> ${formatarMoeda(juros)}</p>
-          <p><strong>Total atualizado:</strong> ${formatarMoeda(valorFinal)}</p>
+        <h1>Cálculo Realizado</h1>
+        <div class="result-card">
+            <div class="result-header">
+                <p>${resumo}</p>
+            </div>
+            <div class="result-body">
+                <p><span>Data de Vencimento:</span> <strong>${formatarDataBR(venc)}</strong></p>
+                <p><span>Data de Pagamento:</span> <strong>${formatarDataBR(pagamento)}</strong></p>
+                <p><span>Valor Original:</span> <strong>${formatarMoeda(valor)}</strong></p>
+                <p><span>Multa (${multaPct}%):</span> <strong>${formatarMoeda(multa)}</strong></p>
+                <p><span>Juros (${jurosMensalPct}% a.m.):</span> <strong>${formatarMoeda(juros)}</strong></p>
+            </div>
+            <div class="result-footer">
+                <span>Valor Final Atualizado:</span>
+                <div class="result-total">${formatarMoeda(valorFinal)}</div>
+            </div>
         </div>
-        <a class="link-voltar" href="?${params.toString()}&refazer=1">Refazer cálculo</a>
+        <button id="copyButton" class="btn" onclick="copiarResultadoParaClipboard()">Copiar Resultado e Link</button>
+        <a class="link-voltar" href="?${params.toString()}&refazer=1">Calcular Novamente</a>
       `;
     }
 
@@ -275,7 +410,8 @@
         mostrarResultado(urlParams);
       }
     } else {
-      mostrarFormulario();
+      const today = new Date().toISOString().split('T')[0];
+      mostrarFormulario({ pagamento: today });
     }
   
   </script>
