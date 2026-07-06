@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Exclusiva: VW Gol 1000 CHT 1993</title>
+    <style>
+        :root {
+            --primary-color: #004d99; /* Azul clássico automotivo */
+            --secondary-color: #ffcc00; /* Amarelo chamada para ação */
+            --text-color: #333333;
+            --bg-color: #f4f4f9;
+            --white: #ffffff;
+            --success: #25D366; /* WhatsApp Green */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Price Anchor */
+        .price-section {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .price-section .section-title {
+            color: var(--white);
+        }
+
+        .price-section .section-title::after {
+            background-color: var(--secondary-color);
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 20px 0;
+        }
+
+        .price-subtext {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Simulator */
+        .simulator-box {
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #e6b800;
+        }
+
+        /* Table */
+        .table-container {
+            margin-top: 30px;
+            display: none;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-wpp {
+            background-color: var(--success);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .btn-wpp:hover {
+            background-color: #20b858;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .price-tag { font-size: 2.5rem; }
+            .section { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <header>
+            <h1>O Clássico Indestrutível</h1>
+            <p class="subtitle">VW Gol 1000 CHT 1993 - Economia, Robustez e Procedência.</p>
+        </header>
+
+        <img src="image_ed0903.jpg" alt="VW Gol 1000 CHT 1993" class="hero-image">
+
+        <!-- Benefícios (Gatilhos de Autoridade e Razão) -->
+        <section class="section">
+            <h2 class="section-title">Por que este é o melhor negócio que você vai fazer hoje?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Motor CHT Lendário</h3>
+                    <p>Conhecido pela sua durabilidade inabalável. Um motor valente que não te deixa na mão e tem a manutenção mais barata e acessível do mercado.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Economia Extrema</h3>
+                    <p>Faça seu dinheiro render mais. O consumo inteligente deste modelo é perfeito para o dia a dia, poupando seu bolso a cada quilômetro rodado.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Isento de IPVA</h3>
+                    <p>Chega de pagar impostos caros no início do ano. Um veículo clássico, com documentação em dia, livre de IPVA para sempre.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ancoragem de Preço -->
+        <section class="section price-section">
+            <h2 class="section-title">Valorização Garantida</h2>
+            <p class="price-subtext">Veículos deste ano, neste estado de conservação, estão cada vez mais difíceis de encontrar. Uma verdadeira raridade pronta para rodar.</p>
+            <div class="price-tag">R$ 12.990</div>
+            <p>O melhor custo-benefício para quem busca um carro honesto, revisado e super econômico.</p>
+	    <p>Desconto para pagamento à vista.</p>
+        </section>
+
+        <!-- Simulador de Pagamento -->
+        <section class="section">
+            <h2 class="section-title">Simule Suas Parcelas</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Facilitamos a negociação! Informe o valor que você pode dar de entrada e veja como ficam as parcelas do saldo restante.</p>
+            
+            <div class="simulator-box">
+                <div class="input-group">
+                    <label for="entrada">Qual o valor da sua entrada? (R$)</label>
+                    <input type="number" id="entrada" placeholder="Ex: 5000" min="0" max="12500" step="100">
+                </div>
+                <button class="btn" onclick="simular()">Calcular Parcelas</button>
+
+                <div class="table-container" id="tabela-container">
+                    <p style="margin: 15px 0; font-size: 0.9rem; color: #666;">
+                        <em>*Simulação baseada em condições especiais de negociação. Vencimento da 1ª parcela para 30 dias.</em>
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parcelas</th>
+                                <th>Valor da Parcela</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultado-simulacao">
+                            <!-- JS vai popular aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Veículo disponível para visitação em Brotas / SP</p>
+            <p>&copy; 2026 - Negociação Direta com o Proprietário</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function simular() {
+            const inputEntrada = document.getElementById('entrada').value.replace(',', '.');
+            const entrada = parseFloat(inputEntrada);
+            
+            // Validação
+            if (isNaN(entrada) || entrada < 0) {
+                alert("Por favor, insira um valor válido de entrada.");
+                return;
+            }
+            if (entrada >= 12500) {
+                alert("O valor de entrada deve ser menor que R$ 12.500 para gerar parcelas.");
+                return;
+            }
+
+            // O prompt solicita que o cálculo da dívida assuma o valor base de 12500 para negociação.
+            const valorTotalBase = 12500;
+            const saldoDevedor = valorTotalBase - entrada;
+            const taxaJuros = 0.025; // 2.5% ao mês
+            
+            const tbody = document.getElementById('resultado-simulacao');
+            tbody.innerHTML = ''; // Limpa tabela anterior
+
+            // Formatação do valor de entrada para o WhatsApp
+            const fEntrada = entrada.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            for (let n = 1; n <= 12; n++) {
+                // Cálculo da prestação (Fórmula PMT: Parcela = PV * [ i / (1 - (1 + i)^-n) ])
+                const pmt = (saldoDevedor * taxaJuros) / (1 - Math.pow(1 + taxaJuros, -n));
+                
+                const fPmt = pmt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                // Link do WhatsApp com a mensagem padronizada
+                // "não ponha o valor da parcela na mensagem de whatsapp"
+                const msg = `Olá, Saulo! Vi a página de venda do Gol 1993. Gostaria de dar ${fEntrada} de entrada e parcelar o restante em ${n} vezes. Podemos conversar?`;
+                const wppLink = `https://wa.me/5511985846616?text=${encodeURIComponent(msg)}`;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${n}x</strong></td>
+                    <td>${fPmt}</td>
+                    <td><a href="${wppLink}" class="btn-wpp" target="_blank">Quero Esse</a></td>
+                `;
+                
+                tbody.appendChild(tr);
+            }
+
+            // Exibir a tabela com animação suave
+            document.getElementById('tabela-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
