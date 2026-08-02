@@ -24,6 +24,18 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 
 .section-intro { text-align: center; max-width: 700px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; }
 
+/* --- NAVEGAÇÃO --- */
+.main-nav { position: sticky; top: 0; z-index: 1000; background-color: var(--card-bg-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.nav-content { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 20px; }
+.nav-logo { font-family: var(--font-headings); font-weight: 700; font-size: 1.2rem; color: var(--primary-color); text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 1.3rem; }
+.nav-links a { display: flex; align-items: center; gap: 0.4rem; color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+.nav-links a:hover { color: var(--secondary-color); }
+
+/* --- AVISO SEM JAVASCRIPT / ERRO DE CARREGAMENTO --- */
+.load-error-box { background-color: #fffbe6; border: 1px solid #ffe58f; color: #8a6d3b; padding: 1.5rem; border-radius: 8px; margin: 2rem auto; max-width: 600px; text-align: center; }
+.load-error-box p { margin-bottom: 1rem; }
+
 /* --- ANIMAÇÃO --- */
 .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
@@ -75,15 +87,16 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 
 
 /* --- GRID E CARDS DE IMÓVEIS --- */
-.property-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 380px)); justify-content: center; gap: 2rem; }
 .property-card { background: var(--card-bg-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; /* Garante altura uniforme */ }
 .video-container { position: relative; }
 .property-card video { display: block; width: 100%; }
 .property-details { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.available-badge { display: inline-block; align-self: flex-start; background-color: var(--success-color); color: white; font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 0.75rem; }
 .property-price { font-size: 1.8rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
 .features-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; padding: 0; }
 .features-list li { display: flex; align-items: center; gap: 0.5rem; background-color: #f4f6f7; padding: 5px 10px; border-radius: 5px; }
-.property-cta-button { background-color: var(--success-color); color: white; padding: 12px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: auto; transition: opacity 0.3s; }
+.property-cta-button { background-color: var(--success-color); color: white; padding: 14px; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: auto; transition: opacity 0.3s; }
 .property-cta-button:hover { opacity: 0.9; }
 
 /* --- SEÇÃO COMO ALUGAR --- */
@@ -106,19 +119,21 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 /* --- FOOTER E BOTÃO WHATSAPP --- */
 footer { background-color: var(--primary-color); color: #bdc3c7; padding: 3rem 0; text-align: center; }
 footer h2 { color: white; }
-.footer-cta-button { background-color: var(--success-color); color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-block; margin-top: 1rem; margin-bottom: 2rem; }
+.footer-cta-button { background-color: var(--success-color); color: white; padding: 15px 30px; min-height: 48px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 1rem; margin-bottom: 2rem; }
 .copyright { font-size: 0.9rem; }
 .whatsapp-float { position: fixed; text-decoration: none; bottom: 20px; right: 20px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.3s; }
 .whatsapp-float:hover { transform: scale(1.1); }
 
 /* --- MEDIA QUERIES --- */
+@media (max-width: 480px) {
+    .nav-content { padding: 0.7rem 15px; }
+    .nav-logo { font-size: 1rem; }
+    .nav-links { gap: 0.7rem; }
+    .nav-links a { font-size: 0.8rem; }
+}
+
 @media (min-width: 768px) {
     .hero-title { font-size: 4rem; }
     .condo-info-grid { grid-template-columns: repeat(2, 1fr); }
-    .property-grid { grid-template-columns: repeat(2, 1fr); }
     .conditions-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1024px) {
-    .property-grid { grid-template-columns: repeat(3, 1fr); }
 }

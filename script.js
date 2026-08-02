@@ -23,7 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
             renderContent(data);
         } catch (error) {
             console.error('Erro fatal ao carregar dados:', error);
+            showLoadError();
         }
+    };
+
+    const showLoadError = () => {
+        const listings = document.getElementById('listings');
+        listings.innerHTML = `
+            <div class="container">
+                <div class="load-error-box">
+                    <p>Não foi possível carregar os imóveis agora. Tente atualizar a página.</p>
+                    <a href="https://wa.me/5511981246767" target="_blank" class="property-cta-button"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+                </div>
+            </div>
+        `;
     };
 
     const renderContent = (data) => {
@@ -48,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (condo.commonAreaVideoUrl) {
             const videoContainer = document.getElementById('condo-video-container');
-            videoContainer.innerHTML = createVideoPlayer(condo.commonAreaVideoUrl, true);
+            videoContainer.innerHTML = createVideoPlayer(condo.commonAreaVideoUrl, true, condo.commonAreaPosterUrl);
         }
 
         const listingsContainer = document.getElementById('condo-property-listings');
@@ -77,9 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.innerHTML = `
             <div class="video-container">
-                ${createVideoPlayer(property.videoUrl)}
+                ${createVideoPlayer(property.videoUrl, false, property.posterUrl)}
             </div>
             <div class="property-details">
+                <span class="available-badge">Disponível agora</span>
                 <h3>${property.title}</h3>
                 <p>${property.description}</p>
                 <p class="property-price">${formattedPrice} / mês</p>
@@ -93,12 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     };
 
-    const createVideoPlayer = (videoUrl, isMuted = false) => {
+    const createVideoPlayer = (videoUrl, isMuted = false, posterUrl = '') => {
         if (!videoUrl) return ''; // Retorna string vazia se não houver vídeo
-        
+
         // Retornando vídeo com controles nativos do browser
         return `
-            <video src="${videoUrl}" loop ${isMuted ? 'muted' : ''} playsinline controls></video>
+            <video src="${videoUrl}" ${posterUrl ? `poster="${posterUrl}"` : ''} loop ${isMuted ? 'muted' : ''} playsinline controls preload="metadata"></video>
         `;
     };
 

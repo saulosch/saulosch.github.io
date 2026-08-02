@@ -11,7 +11,8 @@
     ],
     "rules": "Por ser um condomínio com áreas compartilhadas, não são permitidos animais de estimação, visando o bem-estar de todos os moradores.",
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.9794316252754!2d-48.1407873943885!3d-22.281106188593814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c7799f5ee9511d%3A0x51b5bca31ccbd6a9!2sR.%20Francisco%20Colombo%2C%20100%20-%20Lagoa%20Dourada%2C%20Brotas%20-%20SP%2C%2017380-000!5e0!3m2!1spt-BR!2sbr!4v1727448718357!5m2!1spt-BR!2sbr",
-    "commonAreaVideoUrl": "../video-condominio2.mp4"
+    "commonAreaVideoUrl": "../video-condominio2.mp4",
+    "commonAreaPosterUrl": "video-condominio2-poster.jpg"
   },
   "properties": [
     {
@@ -22,6 +23,7 @@
       "price": 900,
       "available": true,
       "videoUrl": "../video-kitnet.mp4",
+      "posterUrl": "video-kitnet-poster.jpg",
       "features": [
         {"icon": "fas fa-person-shelter", "text": "1 Quarto/Cozinha"},
         {"icon": "fas fa-shower", "text": "1 Banheiro"},
@@ -31,7 +33,7 @@
     {
       "id": "FC60-3",
       "isCondominiumProperty": true,
-      "title": "2 Quartos / FC60-3",
+      "title": "Casa 2 Quartos no Condomínio",
       "description": "Mais conforto para sua família. Com cômodos bem iluminados e arejados, é o lar ideal para criar novas memórias.",
       "price": 1200,
       "available": false,
@@ -59,6 +61,26 @@
         {"icon": "fas fa-kitchen-set", "text": "Cozinha e Sala"},
         {"icon": "fas fa-faucet", "text": "Lavanderia"},
         {"icon": "fas fa-car", "text": "Garagem"}
+      ]
+    },
+    {
+      "id": "RL570B",
+      "isCondominiumProperty": false,
+      "title": "Casa na Roberto Lazari",
+      "description": "Casa espaçosa e independente, com garagem coberta e portão eletrônico. Ideal para quem busca mais segurança e espaço para a família.",
+      "price": 1700,
+      "available": true,
+      "videoUrl": "rl570b-2026.mp4",
+      "posterUrl": "rl570b-2026-poster.jpg",
+      "address": "Rua Roberto Lazari, 570-B, Planalto, Brotas - SP",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.985747027485!2d-48.134533375862276!3d-22.288290496973456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c779bb85a951b3%3A0xea316d07e2cab49f!2sR.%20Roberto%20Lazari%2C%20570%20-%20Centro%2C%20Brotas%20-%20SP%2C%2017380-000!5e0!3m2!1spt-BR!2sbr!4v1755387132625!5m2!1spt-BR!2sbr",
+      "features": [
+        {"icon": "fas fa-bed", "text": "2 Quartos"},
+        {"icon": "fas fa-shower", "text": "2 Banheiros"},
+        {"icon": "fas fa-kitchen-set", "text": "Cozinha e Sala"},
+        {"icon": "fas fa-faucet", "text": "Lavanderia"},
+        {"icon": "fas fa-warehouse", "text": "Garagem coberta"},
+        {"icon": "fas fa-door-closed", "text": "Portão eletrônico"}
       ]
     }
   ]
