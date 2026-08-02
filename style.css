@@ -14,6 +14,8 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
+html { overflow-x: hidden; }
+
 body { font-family: var(--font-main); background-color: var(--background-color); color: var(--text-color); line-height: 1.7; overflow-x: hidden; /* Previne scroll horizontal */ }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
@@ -56,8 +58,8 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 /* --- SEÇÃO DO CONDOMÍNIO --- */
 #condo-listings-section { background-color: var(--card-bg-color); }
 .condo-info-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 2rem 0; }
-.condo-info-box { padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
-.condo-info-box h3 { display: flex; align-items: center; gap: 0.75rem; }
+.condo-info-box { padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; min-width: 0; }
+.condo-info-box h3 { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
 .condo-info-box ul { list-style: none; padding-left: 1.5rem; }
 .address-text { margin-bottom: 1rem; }
 .map-wrapper { position: relative; padding-bottom: 75%; height: 0; overflow: hidden; border-radius: 8px; }
@@ -83,12 +85,12 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
     height: 3px;
     background-color: var(--secondary-color);
 }
-#condo-video-container video { max-height: 80vh; position: relative; text-align: cen;}
+#condo-video-container video { display: block; width: 100%; max-height: 80vh; }
 
 
 /* --- GRID E CARDS DE IMÓVEIS --- */
 .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 380px)); justify-content: center; gap: 2rem; }
-.property-card { background: var(--card-bg-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; /* Garante altura uniforme */ }
+.property-card { background: var(--card-bg-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; min-width: 0; /* Garante altura uniforme */ }
 .video-container { position: relative; }
 .property-card video { display: block; width: 100%; }
 .property-details { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
@@ -108,7 +110,7 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 }
 
 .conditions-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.condition-card { background: var(--card-bg-color); padding: 2rem; border-radius: 8px; border-top: 5px solid var(--border-color); position: relative; }
+.condition-card { background: var(--card-bg-color); padding: 2rem; border-radius: 8px; border-top: 5px solid var(--border-color); position: relative; min-width: 0; }
 .condition-card.highlighted { border-top-color: var(--accent-color); }
 .highlight-badge { position: absolute; top: -15px; right: 20px; background-color: var(--accent-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; }
 .payment-terms { font-style: italic; margin-bottom: 1rem; background-color: #f8f9fa; padding: 10px; border-radius: 5px; }
@@ -128,8 +130,9 @@ footer h2 { color: white; }
 @media (max-width: 480px) {
     .nav-content { padding: 0.7rem 15px; }
     .nav-logo { font-size: 1rem; }
-    .nav-links { gap: 0.7rem; }
-    .nav-links a { font-size: 0.8rem; }
+    .nav-links { gap: 1.1rem; }
+    .nav-links a { font-size: 1.2rem; }
+    .nav-links a .nav-label { display: none; }
 }
 
 @media (min-width: 768px) {
