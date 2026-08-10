@@ -69,7 +69,7 @@
       "title": "Casa na Roberto Lazari",
       "description": "Casa espaçosa e independente, com garagem coberta e portão eletrônico. Ideal para quem busca mais segurança e espaço para a família.",
       "price": 1700,
-      "available": true,
+      "available": false,
       "videoUrl": "rl570b-2026.mp4",
       "posterUrl": "rl570b-2026-poster.jpg",
       "address": "Rua Roberto Lazari, 570-B, Planalto, Brotas - SP",
