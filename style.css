@@ -118,6 +118,13 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 .condition-card li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; }
 .condition-card li i { color: var(--success-color); margin-right: 0.75rem; margin-top: 4px; }
 
+.reserva-grid .condition-card { display: flex; flex-direction: column; }
+.reserva-grid .condition-card p { flex-grow: 1; }
+.step-badge { display: inline-block; background-color: var(--secondary-color); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+.reserva-cta-button { background-color: var(--secondary-color); color: white; padding: 14px; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: 700; margin-top: 1rem; transition: opacity 0.3s; }
+.reserva-cta-button:hover { opacity: 0.9; }
+.reserva-cta-button.whatsapp { background-color: var(--success-color); }
+
 /* --- FOOTER E BOTÃO WHATSAPP --- */
 footer { background-color: var(--primary-color); color: #bdc3c7; padding: 3rem 0; text-align: center; }
 footer h2 { color: white; }
