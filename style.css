@@ -118,6 +118,7 @@ h3 { font-family: var(--font-headings); font-weight: 700; color: var(--primary-c
 .condition-card li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; }
 .condition-card li i { color: var(--success-color); margin-right: 0.75rem; margin-top: 4px; }
 
+#reserva { padding: 4rem 0; }
 .reserva-grid .condition-card { display: flex; flex-direction: column; }
 .reserva-grid .condition-card p { flex-grow: 1; }
 .step-badge { display: inline-block; background-color: var(--secondary-color); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }

@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- ANO DO RODAPÉ ---
+    const copyrightYearEl = document.getElementById('copyright-year');
+    if (copyrightYearEl) copyrightYearEl.textContent = new Date().getFullYear();
+
     // --- ANIMAÇÃO DE SCROLL ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -17,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA PRINCIPAL ---
     const fetchData = async () => {
         try {
-            const response = await fetch('imoveis.json');
+            const response = await fetch('imoveis.json', { cache: 'no-store' });
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
             renderContent(data);
