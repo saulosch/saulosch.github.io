@@ -21,7 +21,7 @@
       "title": "Kitnet Aconchegante",
       "description": "O espaço perfeito para quem busca praticidade. Ideal para estudantes ou solteiros, este ambiente une conforto e funcionalidade para o seu dia a dia.",
       "price": 900,
-      "available": true,
+      "available": false,
       "videoUrl": "../video-kitnet.mp4",
       "posterUrl": "video-kitnet-poster.jpg",
       "features": [
